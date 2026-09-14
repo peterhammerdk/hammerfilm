@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peter Hammer — Documentary Filmmaker</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #E3E0CA;
+    --paper: #1C1710;
+    --muted: #4A4030;
+    --moss: #8A6D1E;
+    --line: #C7C2A0;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--paper);
+  }
+
+  body {
+    font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1050px;
+    margin: 0 auto 0 5vw;
+    padding: 14vh 24px 12vh;
+    opacity: 0;
+    animation: settle 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wrap { animation: none; opacity: 1; }
+  }
+
+  h1 {
+    font-weight: 900;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+    margin: 0 0 64px;
+    margin-left: -0.02em;
+  }
+
+  .tagline {
+    font-weight: 400;
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0 0 20px;
+  }
+
+  .tagline strong {
+    color: var(--paper);
+    font-weight: 500;
+  }
+
+  .tagline a {
+    color: var(--paper);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .tagline a:hover {
+    color: var(--moss);
+    border-color: var(--moss);
+  }
+
+  .tagline:last-of-type {
+    margin-bottom: 60px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    margin: 0 0 24px;
+  }
+
+  .project-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 680px;
+  }
+
+  .project-list li {
+    padding: 10px 0;
+  }
+
+  .project-list li:first-child { padding-top: 0; }
+  .project-list li:last-child { padding-bottom: 0; }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .film-name {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.005em;
+    color: var(--paper);
+  }
+
+  .film-name a {
+    color: var(--paper);
+    text-decoration: none;
+    background-image: linear-gradient(var(--moss), var(--moss));
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.2s ease;
+    padding-bottom: 2px;
+  }
+
+  .film-name a:hover { background-size: 100% 1px; }
+
+  .film-year {
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .film-desc {
+    font-size: 15px;
+    color: var(--muted);
+    margin: 4px 0 0;
+    max-width: 500px;
+  }
+
+  .film-desc a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .film-desc a:hover {
+    color: var(--moss);
+    border-color: var(--moss);
+  }
+
+  .film-award {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    margin: 4px 0 0;
+  }
+
+  .award-badge {
+    display: inline;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--moss);
+    background: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    margin-right: 6px;
+    position: static;
+    top: auto;
+  }
+
+  .title-group {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .row-right {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+  }
+
+  .film-links {
+    display: flex;
+    gap: 8px;
+  }
+
+  .film-links a {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--moss);
+    background: none;
+    padding: 2px 7px;
+    border: 1px solid var(--moss);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .film-links a:hover {
+    background: var(--moss);
+    color: var(--bg);
+  }
+
+  section + section,
+  .intro + section {
+    margin-top: 40px;
+    border-top: 1px solid var(--line);
+    padding-top: 40px;
+    max-width: 680px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .contact-line {
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .contact-line a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .contact-line a:hover {
+    color: var(--moss);
+    border-color: var(--moss);
+  }
+
+  .social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .social-row a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--moss);
+    background: none;
+    padding: 2px 7px;
+    border: 1px solid var(--moss);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .social-row a:hover {
+    background: var(--moss);
+    color: var(--bg);
+  }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 11vh 20px 9vh; }
+    .row { flex-direction: column; align-items: flex-start; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1 id="name">Peter Hammer</h1>
+    <div class="intro">
+      <p class="tagline"><strong>Documentary filmmaker &amp; creative producer</strong> working in cinema and broadcast. I'm based in Copenhagen (and sometimes Amsterdam) and currently also teaching at the National Film School here. I hold an M.A in <em>artistic research through cinema</em> from <a href="https://masteroffilm.nl" target="_blank" rel="noopener">Master of Film at Netherlands Film Academy</a>, and a Bachelor of Journalism from <a href="https://www.dmjx.dk/international" target="_blank" rel="noopener">DMJX</a>.</p>
+      <p class="tagline">A new site is under way. I'm available for consultancy and advisory work — please get in touch.</p>
+
+      <section id="contact-section">
+        <h2>CONTACT</h2>
+        <div class="contact-row">
+          <p class="contact-line"><a href="mailto:peter@hammer.film">peter@hammer.film</a></p>
+          <div class="social-row">
+            <a href="https://letterboxd.com/peterhammer" target="_blank" rel="noopener">Letterboxd</a>
+            <a href="https://instagram.com/peterhammer" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://dk.linkedin.com/in/peter-hammer-a61b461b7" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="projects-section">
+      <h2>PROJECTS</h2>
+
+      <ul class="project-list">
+        <li>
+          <div class="row">
+            <span class="film-name">Mystery Eel</span>
+            <span class="film-year">Work-in-progress</span>
+          </div>
+          <p class="film-desc">Feature documentary supported by the Carlsberg Foundation, the Danish Film Institute and the West Danish Film Fund, in collaboration with <a href="https://gotfat.dk" target="_blank" rel="noopener">GotFat Productions</a> and <a href="https://www.thingreenline.dk" target="_blank" rel="noopener">Thin Green Line Productions</a>.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="film-name">Bevaringsfeber</span>
+            <span class="film-year">Work-in-progress</span>
+          </div>
+          <p class="film-desc">Documentary project.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="film-name">The Listeners</span>
+            <span class="film-year">Work-in-progress</span>
+          </div>
+          <p class="film-desc">Documentary feature with writer-director <a href="https://www.mishoantadze.com" target="_blank" rel="noopener">Misho Antadze</a>, produced by <a href="https://witfilm.nl" target="_blank" rel="noopener">WitFilm</a> in Amsterdam with support from Netherlands Film Fund.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="works-section">
+      <h2>SELECTED WORKS</h2>
+      <ul class="project-list">
+        <li>
+          <div class="row">
+            <span class="film-name">Revir — Everything You Hold Dear</span>
+            <div class="row-right">
+              <div class="film-links">
+                <a href="https://fjernleje.filmstriben.dk/film/9372630481/revir" target="_blank" rel="noopener">Filmstriben</a>
+                <a href="https://paradox.dk/film/revir-everything-you-hold-dear/" target="_blank" rel="noopener">Para:DOX</a>
+                <a href="https://www.dr.dk/drtv/program/soeskende-for-livet_409932" target="_blank" rel="noopener">DRTV</a>
+              </div>
+              <span class="film-year">2023</span>
+            </div>
+          </div>
+          <p class="film-desc">Feature film premiered at CPH:DOX, selected for competition at Hot Docs and Nordisk Panorama.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="film-name">Gina Jaqueline — en sugardaters fortælling</span>
+            <div class="row-right">
+              <div class="film-links">
+                <a href="https://www.dr.dk/drtv/serie/gina-jaqueline-_-en-sugardaters-fortaelling_6564" target="_blank" rel="noopener">DRTV</a>
+              </div>
+              <span class="film-year">2017</span>
+            </div>
+          </div>
+          <p class="film-award"><span class="award-badge">TV-Prisen</span>Bedste reportage</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="film-name">Morderen på den Hvide Hest</span>
+            <div class="row-right">
+              <div class="film-links">
+                <a href="https://www.dr.dk/drtv/program/morderen-paa-den-hvide-hest_376040" target="_blank" rel="noopener">DRTV</a>
+              </div>
+              <span class="film-year">2016</span>
+            </div>
+          </div>
+          <p class="film-award"><span class="award-badge">TV-Prisen</span>Bedste crime</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="film-name">Det Ender Med Drab</span>
+            <div class="row-right">
+              <div class="film-links">
+                <a href="https://www.dr.dk/drtv/serie/det-ender-med-drab_45748" target="_blank" rel="noopener">DRTV</a>
+              </div>
+              <span class="film-year">2015</span>
+            </div>
+          </div>
+          <p class="film-award"><span class="award-badge">The AIBs</span>Specialist Award</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="film-name">Duellen</span>
+            <span class="film-year">2012</span>
+          </div>
+          <p class="film-award"><span class="award-badge">The AIBs</span>High Commendation</p>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    function fitName() {
+      const el = document.getElementById('name');
+      const textBlock = document.querySelector('.tagline');
+      const containerWidth = textBlock.clientWidth;
+      el.style.fontSize = '100px';
+      const textWidth = el.scrollWidth;
+      const newSize = 100 * (containerWidth / textWidth) * 1.06 * 0.75;
+      el.style.fontSize = newSize + 'px';
+    }
+    fitName();
+    window.addEventListener('resize', fitName);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fitName);
+    }
+  </script>
+</body>
+</html>
